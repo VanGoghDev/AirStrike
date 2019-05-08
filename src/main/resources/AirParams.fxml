@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.firsov.controllers.AirParamsController">
+   <children>
+      <AnchorPane prefHeight="75.0" prefWidth="347.0">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="137.0" layoutX="268.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@airCraftIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="62.0" fitWidth="85.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@7.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" prefHeight="25.0" prefWidth="137.0" text="Set Name:" />
+            <TextField fx:id="nameField" layoutX="184.0" layoutY="12.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label layoutX="16.0" layoutY="12.0" prefHeight="25.0" prefWidth="170.0" text="Set Parameters (x, y, z, vx, vy, vz):" />
+            <TextField layoutX="184.0" layoutY="12.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" prefHeight="25.0" prefWidth="76.0" text="Fuel:" />
+            <Slider layoutX="193.0" layoutY="17.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" prefHeight="25.0" prefWidth="137.0" text="Mass of LA:" />
+            <TextField layoutX="184.0" layoutY="12.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" prefHeight="25.0" prefWidth="137.0" text="Fuel Consumption:" />
+            <TextField layoutX="184.0" layoutY="12.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="48.0" prefWidth="347.0">
+         <children>
+            <Label layoutX="18.0" layoutY="12.0" prefHeight="25.0" prefWidth="137.0" text="Thrust coefficent:" />
+            <TextField layoutX="184.0" layoutY="12.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="43.0" prefWidth="347.0">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="193.0" layoutY="9.0" mnemonicParsing="false" onAction="#getText" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #3671AC; -fx-text-fill: white;" text="Save" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

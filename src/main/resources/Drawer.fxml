@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="304.0" prefWidth="128.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.firsov.controllers.Drawer">
+   <children>
+      <ImageView fitHeight="84.0" fitWidth="134.0" pickOnBounds="true">
+         <image>
+            <Image url="@back.jpg" />
+         </image></ImageView>
+      <JFXButton fx:id="btnAirParams" accessibleText="btnAirParams" mnemonicParsing="false" prefHeight="47.0" prefWidth="184.0" styleClass="jfx-button" text="Aircraft Params" />
+      <JFXButton fx:id="btnMissileParam" mnemonicParsing="false" prefHeight="47.0" prefWidth="188.0" text="Missile Params" />
+      <JFXButton fx:id="btnEulerParams" mnemonicParsing="false" prefHeight="47.0" prefWidth="422.0" text="Eulers Params" />
+      <JFXButton fx:id="btnChartParams" mnemonicParsing="false" prefHeight="47.0" prefWidth="422.0" text="Chart Params" />
+   </children>
+</VBox>

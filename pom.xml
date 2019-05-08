@@ -47,6 +47,18 @@
             <version>0.2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.8</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -58,6 +70,7 @@
     </repositories>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>com.zenjava</groupId>
