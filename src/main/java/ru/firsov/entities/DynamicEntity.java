@@ -3,6 +3,7 @@ package ru.firsov.entities;
 import ru.firsov.models.EntityModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DynamicEntity implements EntityModel {
 
@@ -61,6 +62,16 @@ public class DynamicEntity implements EntityModel {
     @Override
     public double[] getNewSceneInitialState(double[] x) {
         return new double[0];
+    }
+
+    @Override
+    public void addEntity(DynamicEntity entity) {
+
+    }
+
+    @Override
+    public List<DynamicEntity> getEntities() {
+        return null;
     }
 
     @Override

@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Scene implements Model {
+public class MScene implements Model {
     private List<DynamicEntity> entities = new ArrayList<DynamicEntity>();
     private double[][] initialState;
     private static int DIMENSION = 7;
 
-    public Scene(DynamicEntity[] entity) {
+    public MScene(DynamicEntity[] entity) {
         entities.addAll(Arrays.asList(entity));
         setInitialState();
     }
@@ -69,6 +69,16 @@ public class Scene implements Model {
         }
         double[] arrX = xx.stream().mapToDouble(d -> d).toArray();
         return arrX;
+    }
+
+    @Override
+    public void addEntity(DynamicEntity entity) {
+        entities.add(entity);
+    }
+
+    @Override
+    public List<DynamicEntity> getEntities() {
+        return entities;
     }
 
     private void setInitialState() {

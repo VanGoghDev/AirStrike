@@ -1,6 +1,6 @@
 
 .root{
-    -fx-background-color: #526075;
+    -fx-background-color: white;
 }
 
 .line-chart {
@@ -36,11 +36,11 @@
 }
 
 .green-button {
-    -fx-background-color: #1ea120;
+    -fx-background-color: #26de81;
 }
 
 .red-button {
-    -fx-background-color: #bf3f3f;
+    -fx-background-color: #eb3b5a;
 }
 
 .blue-button {

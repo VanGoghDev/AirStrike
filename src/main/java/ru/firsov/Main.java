@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/MainWindow.fxml"));
         primaryStage.setTitle("Air Strike");
-        Scene scene = new Scene(root, 905, 580);
+        Scene scene = new Scene(root, 1072, 678);
         scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
         primaryStage.show();

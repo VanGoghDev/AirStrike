@@ -1,5 +1,6 @@
 package ru.firsov.integrators;
 
+import ru.firsov.entities.DynamicEntity;
 import ru.firsov.models.Model;
 
 public class EulerIntegrator extends Thread{
@@ -37,5 +38,13 @@ public class EulerIntegrator extends Thread{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addEntity(DynamicEntity entity) {
+        model.addEntity(entity);
+    }
+
+    public Model getModel() {
+        return model;
     }
 }
