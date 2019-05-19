@@ -125,9 +125,12 @@ public class MainWindowController implements Initializable {
     }
 
     public void addAircraft(ActionEvent actionEvent) {
-        if (!addNewEntity) {
+        if (!started) {
             entities.add(new Aircraft(new double[]{100, 100, 0, 100, 0, 0, 150}, 200, 0.1, 100));
         } else {
+            euler.addEntity(new Aircraft(new double[]{100, 100, 0, 100, 0, 0, 150}, 200, 0.1, 100));
+            addSeries = true;
+            buildPlot();
         }
     }
 

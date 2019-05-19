@@ -29,9 +29,9 @@ public class EulerIntegrator extends Thread{
                 }
 
                 yIn = model.getNewSceneInitialState(yOut);
-                for (double v : yOut) {
+                /*for (double v : yOut) {
                     System.out.println(v);
-                }
+                }*/
                 yOut = new double[yIn.length];
             }
 

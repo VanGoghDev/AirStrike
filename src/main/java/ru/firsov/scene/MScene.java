@@ -31,6 +31,8 @@ public class MScene implements Model {
         for (int i = 0; i < entities.size(); i++) {
             if (entities.get(i) instanceof Missile) {
                 ((Missile) entities.get(i)).setTargetsX(targetsX);
+                xDot[i] = ((Missile) entities.get(i)).getRight(entitiesX[i], t);
+                continue;
             }
             xDot[i] = entities.get(i).getRight(entitiesX[i], t);
         }
