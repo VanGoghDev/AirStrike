@@ -58,16 +58,19 @@ public class MScene implements Model {
     public double[] getNewSceneInitialState(double[] x) {
         ArrayList<Double> xx = new ArrayList<>();
         for (int i = 0; i < entities.size(); i++) {
-            double[] entityX = new double[entities.get(i).getDimension()];
-            if (entities.get(i).getBigX().size() == 0)
+            if (entities.get(i).isDestroyed())
+                entities.remove(i);
+        }
+        for (int i = 0; i < entities.size(); i++) {
+            double[] entityX = new double[entities.get(i).getDimension()];  // вектор состояния i-ой сущности
+            if (entities.get(i).getBigX().size() == 0)  // если на первом шаге, то берем значения для вектора состояния из начальных условий
                 System.arraycopy(entities.get(i).getInitialState(), 0, entityX, 0, entities.get(i).getDimension());
-            else
-                System.arraycopy(x, i * entities.get(i).getDimension(), entityX, 0, entities.get(i).getDimension());
+            else  // иначе копируем из общего вектора состояния, который пришел из интегратора
+                System.arraycopy(x, i * entities.get(i).getDimension(), entityX, 0, entities.get(i).getDimension());  // из x начиная с позиции i * количество элементов в векторе состояния одной сущность
             entities.get(i).addX(entityX);
-            if (!entities.get(i).isDestroyed())
-                for (int j = 0; j < 7; j++) {
-                    xx.add(entities.get(i).getBigX().get(entities.get(i).getBigX().size() - 1)[j]);
-                }
+            for (int j = 0; j < 7; j++) {
+                xx.add(entities.get(i).getBigX().get(entities.get(i).getBigX().size() - 1)[j]);
+            }
         }
         double[] arrX = xx.stream().mapToDouble(d -> d).toArray();
         return arrX;

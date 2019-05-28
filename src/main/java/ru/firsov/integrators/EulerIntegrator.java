@@ -17,7 +17,7 @@ public class EulerIntegrator extends Thread{
             double t0 = 0;
             double[] yIn = model.setSceneInitialState();
             double[] yOut = model.setSceneInitialState();
-            while (t0 < 276) {
+            while (true) {
                 Thread.sleep(50);
 
                 double[] f = model.getRight(yIn, t0);

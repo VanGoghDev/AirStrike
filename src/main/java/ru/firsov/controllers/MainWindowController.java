@@ -53,11 +53,12 @@ public class MainWindowController implements Initializable {
     private MScene scene;
     private EulerIntegrator euler;
     XYChart.Series series = new XYChart.Series();
-    List<XYChart.Series> seriesList = new ArrayList<>();
+    private List<XYChart.Series> seriesList = new ArrayList<XYChart.Series>();
     private boolean addSeries = false;
     private boolean started = false;  // Если начали интегрирование, то теперь добавляем объекты напрямую в интегратор
     private boolean addNewEntity = false;  // Если это добавление происходит после того как начали строить график, то теперь в другом потоке добавляем рисунок на график
     DynamicEntity entity;
+    private boolean preSet = true;  // Если графики строим в первый раз, то установить значение переменной равной false
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -149,7 +150,9 @@ public class MainWindowController implements Initializable {
     }
 
     public void addMissile(Missile missile) {
-        entities.add(missile);
+        euler.addEntity(missile);
+        addSeries = true;
+        buildPlot();
     }
 
     public void start(ActionEvent actionEvent) {
@@ -175,27 +178,28 @@ public class MainWindowController implements Initializable {
         yAxis.setAutoRanging(true);
 
         int entitiesSize = euler.getModel().getEntities().size();
-        int bigXSize = euler.getModel().getEntities().get(0).getBigX().size();
 
-        for (int i = 0; i < euler.getModel().getEntities().size(); i++) {
+        if (preSet) {
+            for (int i = 0; i < entitiesSize; i++) {
+                seriesList.add(new XYChart.Series());
+                scPlot.getData().add(seriesList.get(i));
+            }
+            preSet = false;
+        }
+
+        if (addSeries) {
             seriesList.add(new XYChart.Series());
-            scPlot.getData().add(seriesList.get(i));
+            scPlot.getData().add(seriesList.get(seriesList.size() - 1));
         }
 
         Thread updateThread = new Thread(() -> {
             while (euler.isAlive()) {
                 try {
-                    for (int i = 0; i < euler.getModel().getEntities().size(); i++) {
-                        if (!addSeries) {
-                            int finalI = i;
-                            Platform.runLater(() -> seriesList.get(finalI).getData().add(new XYChart.Data(euler.getModel().getEntities().get(finalI).getBigX().get(euler.getModel().getEntities().get(finalI).getBigX().size() - 1)[xAxisIndex], euler.getModel().getEntities().get(finalI).getBigX().get(euler.getModel().getEntities().get(finalI).getBigX().size() - 1)[yAxisIndex])));
-                        } else {
-                            seriesList.add(new XYChart.Series());
-                            scPlot.getData().add(seriesList.get(i));
-                            addSeries = false;
-                        }
+                    for (int i = 0; i < entitiesSize; i++) {
+                        int finalI = i;
+                        Platform.runLater(() -> seriesList.get(finalI).getData().add(new XYChart.Data(euler.getModel().getEntities().get(finalI).getBigX().get(euler.getModel().getEntities().get(finalI).getBigX().size() - 1)[xAxisIndex], euler.getModel().getEntities().get(finalI).getBigX().get(euler.getModel().getEntities().get(finalI).getBigX().size() - 1)[yAxisIndex])));
                     }
-                    Thread.sleep(50);
+                    Thread.sleep(55);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
